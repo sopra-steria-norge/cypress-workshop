@@ -1,5 +1,67 @@
-.App {
+.app {
   background-color: #282c34;
   min-height: 100vh;
+  display: flex;
+}
+
+.country-block {
+  width: 20rem;
+  height: 5rem;
+  padding: 2rem;
+  display: flex;
+  flex-flow: column;
+}
+
+.country-block label {
+  color: white;
+  float: left;
+  margin-right: 1rem;
+}
+
+.country-block span {
+  overflow: hidden;
+  display: block;
+}
+
+.country-block input {
+  width: 13.5rem;
+  border: 1px solid #eee;
+  border-radius: 0.25rem;
+  outline: none;
+  padding: 12px 3px 12px 15px;
+  font-size: 18px;
+}
+
+.country-block div:first-child {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+.country-block button {
   text-align: center;
+  width: 100%;
+  border: 1px solid #eee;
+  border-radius: 0.25rem;
+  background-color: #282c34;
+  color: #eee;
+  padding: 0.5rem 1rem;
+  font-size: 18px;
+}
+
+.country-block button:hover {
+  background-color: #404550;
+  border-color: rgb(208, 208, 208);
+}
+
+.country-block button:active,
+.country-block button:focus {
+  background-color: #505765;
+}
+
+.covid-statistics {
+  font-size: 30px;
+  color: #f1111f
 }
