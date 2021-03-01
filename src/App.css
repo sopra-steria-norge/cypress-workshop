@@ -2,6 +2,20 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
+  flex-flow: column;
+}
+
+.header {
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.content {
+  width: 20rem;
+  display: flex;
+  flex-flow: column;
+  align-self: center;
 }
 
 .country-block {
@@ -13,6 +27,7 @@
 }
 
 .country-block label {
+  font-size: 18px;
   color: white;
   float: left;
   margin-right: 1rem;
@@ -24,7 +39,7 @@
 }
 
 .country-block input {
-  width: 13.5rem;
+  width: 15rem;
   border: 1px solid #eee;
   border-radius: 0.25rem;
   outline: none;
@@ -62,6 +77,23 @@
 }
 
 .covid-statistics {
+  display: flex;
+  padding: 1rem;
+  flex-flow: column;
+  align-self: flex-start;
+}
+
+.statistic-block {
+  color: white;
+  padding: 1rem;
+}
+
+.statistic-block div:first-child {
+  font-size: 20px;
+  padding-bottom: 0.25rem;
+}
+
+.statistic-block div:last-child {
   font-size: 30px;
-  color: #f1111f
+  font-weight: bold;
 }

@@ -4,21 +4,17 @@ import './App.css';
 
 interface CountryStats {
   confirmed: number,
-  deaths: number,
-  recovered: number,
-  active: number
+  deaths: number
 }
 
 const App = () => {
   const [country, setCountry] = useState('');
   const [totalStats, setTotalStats] = useState<CountryStats>({
     confirmed: 0,
-    deaths: 0,
-    recovered: 0,
-    active: 0
+    deaths: 0
   });
 
-  const [{ data, loading, error }, refetch] = useAxios(
+  const [{ data }, refetch] = useAxios(
     `https://api.covid19api.com/live/country/${country}/status/confirmed`,
     {manual: true}
   )
@@ -26,48 +22,48 @@ const App = () => {
   useEffect(() => {
     var newTotalStats = {
       confirmed: 0,
-      deaths: 0,
-      recovered: 0,
-      active: 0
+      deaths: 0
     };
 
     data?.forEach(status => {
       if(new Date(status?.Date)?.toLocaleDateString() === new Date().toLocaleDateString()) {
         newTotalStats.confirmed += status.Confirmed;
         newTotalStats.deaths += status.Deaths;
-        newTotalStats.recovered += status.Recovered;
-        newTotalStats.active += status.Active;
       }
     });
 
     setTotalStats(newTotalStats);
-  }, [data])
-
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error!</p>
+  }, [data]);
 
   return (
     <div className="app">
-      <div className="country-block">
-        <div>
-          <label>Country:</label>
-          <span>
-            <input type="text" value={country} onChange={(event: ChangeEvent<HTMLInputElement>) => setCountry(event.currentTarget.value)}/>
-          </span>
+      <h1 className="header">Covid-19 statistikk</h1>
+      <div className="content">
+        <div className="country-block">
+          <div>
+            <label>Land:</label>
+            <span>
+              <input type="text" value={country} onChange={(event: ChangeEvent<HTMLInputElement>) => setCountry(event.currentTarget.value)}/>
+            </span>
+          </div>
+          <div>
+            <button onClick={() => refetch()}>Søk</button>
+          </div>
         </div>
-        <div>
-          <button onClick={() => refetch()}>Søk</button>
-        </div>
+        {data &&
+          <div className="covid-statistics">
+            <div className="statistic-block">
+              <div>Registrert smittet</div>
+              <div>{totalStats.confirmed.toLocaleString()}</div>
+            </div>
+            <div className="statistic-block">
+              <div>Døde</div>
+              <div>{totalStats.deaths.toLocaleString()}</div>
+            </div>
+          </div>
+        }
       </div>
-      <div className="covid-statistics">
-        <ul>
-          <li>Confirmed: {totalStats.confirmed}</li>
-          <li>Deaths: {totalStats.deaths}</li>
-          <li>Active: {totalStats.active}</li>
-          <li>Recovered: {totalStats.recovered}</li>
-        </ul>
-      </div>
-    </div>
+  </div>
   );
 }
 
