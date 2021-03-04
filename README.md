@@ -1,6 +1,6 @@
 # 🧪 Cypress
 
-## Velkommen til workshop 24.04.2021!
+## Velkommen til workshop 24.03.2021!
 Gjennom dette faggruppemøtet ønkser vi i Frontend og Quality faggruppen å vise hvordan man enkelt kan lage funksjonelle tester ved bruk av rammeverket Cypress.
 
 Dette møtet vil bestå av en workshop hvor man benytter seg av dette prosjektet samt en gjennomgang av hvordan Cypress blir brukt til å teste Worktime. Workshopen vil være for alle, men det kan være greit å ha basis forståelse for programmering for å gjennomføre workshopen.
