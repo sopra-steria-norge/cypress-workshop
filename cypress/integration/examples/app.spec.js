@@ -9,6 +9,8 @@ describe('Covid-19 statistic App', () => {
     it('Displays page', () => {
       cy.get('input').type('norway');
       cy.get('button').click();
+
+      cy.get('[data-cy=deaths]').should('not.have.value', 0);
     });
 });
   

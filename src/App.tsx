@@ -58,7 +58,7 @@ const App = () => {
             </div>
             <div className="statistic-block">
               <div>Døde</div>
-              <div>{totalStats.deaths.toLocaleString()}</div>
+              <div data-cy="deaths">{totalStats.deaths.toLocaleString()}</div>
             </div>
           </div>
         }
