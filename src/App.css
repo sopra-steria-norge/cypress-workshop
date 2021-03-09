@@ -78,9 +78,38 @@
 
 .covid-statistics {
   display: flex;
+}
+
+.covid-total-statistics {
+  display: flex;
   padding: 1rem;
   flex-flow: column;
   align-self: flex-start;
+}
+
+.covid-table-statistics {
+  color: white;
+  width: 20rem;
+  text-align: left;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.covid-table-statistics thead {
+  background-color: #404550;
+}
+
+.covid-table-statistics th,
+.covid-table-statistics td {
+    padding: 12px 15px;
+}
+
+.covid-table-statistics tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.covid-table-statistics tbody tr:nth-of-type(even) {
+  background-color: #404550;
 }
 
 .statistic-block {
