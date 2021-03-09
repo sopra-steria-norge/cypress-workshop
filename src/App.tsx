@@ -5,7 +5,7 @@ import './App.css';
 interface CountryStats {
   confirmed: number,
   deaths: number
-}
+};
 
 const App = () => {
   const [country, setCountry] = useState('');
@@ -52,14 +52,34 @@ const App = () => {
         </div>
         {data &&
           <div className="covid-statistics">
-            <div className="statistic-block">
-              <div>Registrert smittet</div>
-              <div>{totalStats.confirmed.toLocaleString()}</div>
+            <div className="covid-total-statistics">
+              <div className="statistic-block">
+                <div>Registrert smittet</div>
+                <div>{totalStats.confirmed.toLocaleString()}</div>
+              </div>
+              <div className="statistic-block">
+                <div>Døde</div>
+                <div data-cy="deaths">{totalStats.deaths.toLocaleString()}</div>
+              </div>
             </div>
-            <div className="statistic-block">
-              <div>Døde</div>
-              <div data-cy="deaths">{totalStats.deaths.toLocaleString()}</div>
-            </div>
+            <table className="covid-table-statistics">
+              <thead>
+                <tr>
+                  <th>Dato</th>
+                  <th>Registrert smittet</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data?.map(( status, index ) => {
+                  return (
+                    <tr key={index}>
+                      <td>{new Date(status.Date).toLocaleDateString("no-NO")}</td>
+                      <td>{status.Confirmed}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         }
       </div>
