@@ -55,7 +55,7 @@ const App = () => {
             <div className="covid-total-statistics">
               <div className="statistic-block">
                 <div>Registrert smittet</div>
-                <div>{totalStats.confirmed.toLocaleString()}</div>
+                <div data-cy="confirmed">{totalStats.confirmed.toLocaleString()}</div>
               </div>
               <div className="statistic-block">
                 <div>Døde</div>
@@ -72,8 +72,8 @@ const App = () => {
               <tbody>
                 {data?.map(( status, index ) => {
                   return (
-                    <tr key={index}>
-                      <td>{new Date(status.Date).toLocaleDateString("no-NO")}</td>
+                    <tr key={index} data-cy="table-row">
+                      <td>{new Date(status.Date).toISOString().slice(0,10)}</td>
                       <td>{status.Confirmed}</td>
                     </tr>
                   );
