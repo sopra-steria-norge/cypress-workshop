@@ -73,7 +73,7 @@ const App = () => {
                 {data?.map(( status, index ) => {
                   return (
                     <tr key={index}>
-                      <td>{new Date(status.Date).toLocaleDateString("no-NO")}</td>
+                      <td>{new Date(status.Date).toISOString().slice(0,10)}</td>
                       <td>{status.Confirmed}</td>
                     </tr>
                   );
