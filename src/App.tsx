@@ -35,6 +35,13 @@ const App = () => {
     setTotalStats(newTotalStats);
   }, [data]);
 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    console.log(event.key);
+    if (event.key === "Enter") {
+      refetch();
+    }
+  };
+
   return (
     <div className="app">
       <h1 className="header">Covid-19 statistikk</h1>
@@ -43,7 +50,12 @@ const App = () => {
           <div>
             <label>Land:</label>
             <span>
-              <input type="text" value={country} onChange={(event: ChangeEvent<HTMLInputElement>) => setCountry(event.currentTarget.value)}/>
+              <input 
+                type="text"
+                value={country} 
+                onChange={(event: ChangeEvent<HTMLInputElement>) => setCountry(event.currentTarget.value)}
+                onKeyPress={(event: React.KeyboardEvent<HTMLInputElement>) => handleKeyPress(event)}
+              />
             </span>
           </div>
           <div>
