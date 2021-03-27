@@ -12,13 +12,13 @@ describe("Table", () => {
   });
 
   it("finds table row by role name", () => {
-    render(<Table {...props}></Table>);
+    render(<Table {...props} />);
     const tr = screen.getByRole("row", { name: "Dato Registrert smittet" });
     expect(tr).toBeVisible();
   });
 
   it("finds table row by data test id", () => {
-    const { getByTestId } = render(<Table {...props}></Table>);
+    const { getByTestId } = render(<Table {...props} />);
     expect(getByTestId("covidTable")).toBeInTheDocument();
   });
 });
