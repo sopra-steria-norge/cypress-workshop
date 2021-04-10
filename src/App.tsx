@@ -10,13 +10,14 @@ interface CountryStats {
   deaths: number;
 }
 
-const App = () => {
+const App: React.FC = () => {
   const [country, setCountry] = useState("");
   const [totalStats, setTotalStats] = useState<CountryStats>({
     confirmed: 0,
     deaths: 0,
   });
 
+  // Har laget en egen httpService-mappe for axios hvis vi ønsker å mocke det enklere i testene
   const [
     { data },
     refetch,
@@ -45,7 +46,6 @@ const App = () => {
   }, [data]);
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    console.log(event.key);
     if (event.key === "Enter") {
       refetch();
     }

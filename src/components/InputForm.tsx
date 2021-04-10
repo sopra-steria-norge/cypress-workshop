@@ -17,10 +17,11 @@ const InputForm: React.FC<Props> = ({
   return (
     <div className="country-block">
       <div>
-        <label>Land:</label>
+        <label htmlFor="inputField">Land:</label>
         <span>
           <input
             type="text"
+            id="inputField"
             value={country}
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
               setCountry(event.currentTarget.value)

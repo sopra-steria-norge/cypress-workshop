@@ -11,11 +11,11 @@ const Statistics: React.FC<Props> = ({ totalStats }) => {
   return (
     <div className="covid-total-statistics">
       <div className="statistic-block">
-        <div>Registrert smittet</div>
+        <label>Registrert smittet</label>
         <div>{totalStats.confirmed.toLocaleString()}</div>
       </div>
       <div className="statistic-block">
-        <div>Døde</div>
+        <label>Døde</label>
         <div>{totalStats.deaths.toLocaleString()}</div>
       </div>
     </div>

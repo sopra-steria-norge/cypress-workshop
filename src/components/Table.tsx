@@ -4,6 +4,7 @@ import { CovidResponseType } from ".././types/covidResponseType";
 interface Props {
   data: CovidResponseType[];
 }
+
 const Table: React.FC<Props> = ({ data }) => {
   return (
     <table className="covid-table-statistics" data-testid="covidTable">
