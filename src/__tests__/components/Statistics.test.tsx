@@ -27,4 +27,12 @@ describe("Statistics", () => {
     //todo check for new props
     expect(wrapper.exists()).toEqual(true);
   });
+
+  it("test that death count", () => {
+    //todo test correct death count number
+  });
+
+  it("test confirmed", () => {
+    //todo test correct confirmed count number
+  });
 });
