@@ -101,7 +101,7 @@
 
 .covid-table-statistics th,
 .covid-table-statistics td {
-    padding: 12px 15px;
+  padding: 12px 15px;
 }
 
 .covid-table-statistics tbody tr {
@@ -125,4 +125,8 @@
 .statistic-block div:last-child {
   font-size: 30px;
   font-weight: bold;
+}
+
+.searchButton:hover {
+  cursor: pointer;
 }

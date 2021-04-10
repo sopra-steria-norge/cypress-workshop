@@ -33,7 +33,9 @@ const InputForm: React.FC<Props> = ({
         </span>
       </div>
       <div>
-        <button onClick={() => refetch()}>Søk</button>
+        <button className="searchButton" onClick={() => refetch()}>
+          Søk
+        </button>
       </div>
     </div>
   );
