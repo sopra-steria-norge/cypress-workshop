@@ -27,6 +27,4 @@ describe("Statistics", () => {
     //todo check for new props
     expect(wrapper.exists()).toEqual(true);
   });
-
-  it("");
 });
