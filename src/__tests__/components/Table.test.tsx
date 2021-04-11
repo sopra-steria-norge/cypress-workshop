@@ -7,45 +7,60 @@ const props = {
 };
 
 describe("Table", () => {
-  it("renders", () => {
-    render(<Table {...props}></Table>);
+  const setup = (newProps) => {
+    return render(<Table {...newProps}></Table>);
+  };
+
+  it("should render", () => {
+    setup(props);
   });
 
-  it("finner table row med role name", () => {
-    render(<Table {...props} />);
+  it("should display table row with correct role name", () => {
+    setup(props);
 
     const tr = screen.getByRole("row", { name: "Dato Registrert smittet" });
 
     expect(tr).toBeVisible();
   });
 
-  it("finner table row med data-test id", () => {
-    const { getByTestId } = render(<Table {...props} />);
+  it("should display table row with data-test id", () => {
+    const { getByTestId } = setup(props);
 
     const table = getByTestId("covidTable");
 
     expect(table).toBeInTheDocument();
   });
 
-  it("finner antall døde", () => {
-    render(<Table {...props} />);
+  it("should display number of confirmed death", () => {
+    setup(props);
 
     //const confirmedDeathsCell = screen.getByRole("cell", { name: "57522" });
     const confirmedDeathsCell = screen.getByText("57522");
     expect(confirmedDeathsCell).toBeInTheDocument();
   });
 
-  it("finner dato", () => {
-    render(<Table {...props} />);
+  it("should display date", () => {
+    setup(props);
 
     const dateCell = screen.getByText("2021-01-14");
     expect(dateCell).toBeInTheDocument();
   });
 
-  it("finner riktig dato", () => {
-    // Todo: endre på dato i Props og sjekke at de finnes
+  it("should display the changed dates", () => {
+    const firstNewDateValue = "2021-03-03";
+    const lastNewDateValue = "2021-04-04";
+
+    let changedProps = props;
+    changedProps.data[0].Date = new Date(firstNewDateValue).toString();
+    changedProps.data[1].Date = new Date(lastNewDateValue).toString();
+
+    setup(changedProps);
+
+    expect(screen.getByText(firstNewDateValue)).toBeInTheDocument();
+    expect(screen.getByText(lastNewDateValue)).toBeInTheDocument();
   });
 
+  //This two tests should probably be tests for InputForm or App since the Table component dont know anything about the InputForm?
   it("finner riktig antall døde", () => {
     // Todo: endre på dato i Props og sjekke at de finnes
   });
@@ -55,8 +70,11 @@ describe("Table", () => {
     // den returnere ønsket respons
     //
   });
-  it("viser riktig antall rader", () => {
-    // Todo: getAllByRole("tr").count eller noe..
-    //
+
+  it("should display correct number of rows", () => {
+    setup(props);
+
+    const tableCells = screen.getAllByRole('row');
+    expect(tableCells.length).toEqual(3);
   });
 });

@@ -4,14 +4,14 @@ import "../App.css";
 interface Props {
   country: string;
   setCountry: (input: string) => void;
-  refetch: () => void;
+  searchCountry: () => void;
   handleKeyPress: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const InputForm: React.FC<Props> = ({
   country,
   setCountry,
-  refetch,
+  searchCountry,
   handleKeyPress,
 }) => {
   return (
@@ -22,6 +22,7 @@ const InputForm: React.FC<Props> = ({
           <input
             type="text"
             id="inputField"
+            aria-label="country name"
             value={country}
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
               setCountry(event.currentTarget.value)
@@ -33,7 +34,11 @@ const InputForm: React.FC<Props> = ({
         </span>
       </div>
       <div>
-        <button className="searchButton" onClick={() => refetch()}>
+        <button
+          className="searchButton"
+          aria-label="search country"
+          onClick={() => searchCountry()}
+        >
           Søk
         </button>
       </div>

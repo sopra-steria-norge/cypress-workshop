@@ -58,7 +58,7 @@ const App: React.FC = () => {
         <InputForm
           country={country}
           setCountry={setCountry}
-          refetch={refetch}
+          searchCountry={refetch}
           handleKeyPress={handleKeyPress}
         />
         {data && (

@@ -1,26 +1,49 @@
-import { screen, render } from "@testing-library/react";
-import React from "react";
+import { render, act, fireEvent } from "@testing-library/react";
 import InputForm from "../../components/InputForm";
+
+const inputLabel = "country name";
+const buttonLabel = "search country";
 
 const props = {
   setCountry: jest.fn(),
-  refetch: jest.fn(),
+  searchCountry: jest.fn(),
   handleKeyPress: jest.fn(),
-  country: "Norge",
+  country: "",
 };
 
 describe("InputForm", () => {
-  it("renders", () => {
-    render(<InputForm {...props} />);
+  const setup = () => {
+    return render(<InputForm {...props} />);
+  };
+
+  it("should render", () => {
+    setup();
   });
 
-  it("kaller setCountry", () => {
-    //TODO simulere change i input-felt og sjekk for toHaveBeenCalled, og evt. tohaveBeenCalledTimes(1)
+  it("should call setCountry one time when input is changed", () => {
+    const inputForm = setup();
+    const input = inputForm.getByLabelText(inputLabel);
+    
+    act(() => {
+      fireEvent.change(input, {target: { value: 'Norway' }});
+    });
+
+    expect(props.setCountry).toHaveBeenCalled();
+    expect(props.setCountry).toHaveBeenCalledTimes(1);
   });
 
-  it("kaller refetch", () => {
-    // Todo: samme som over. Kanskje rename refetch til searchCountry?
-    render(<InputForm {...props} />);
+  it("should call searchCountry one time when button is clicked", () => {
+    const inputForm = setup();
+    const input = inputForm.getByLabelText(inputLabel);
+    const button = inputForm.getByLabelText(buttonLabel);
+    
+    act(() => {
+      fireEvent.change(input, {target: { value: 'Norway' }});
+      fireEvent.click(button);
+    });
+
+    expect(props.searchCountry).toHaveBeenCalled();
+    expect(props.searchCountry).toHaveBeenCalledTimes(1);
   });
 
   it("finner ingen resultater hvis man skriver inn blankt eller ikke riktig land", () => {
