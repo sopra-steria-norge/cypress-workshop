@@ -60,17 +60,6 @@ describe("Table", () => {
     expect(screen.getByText(lastNewDateValue)).toBeInTheDocument();
   });
 
-  //This two tests should probably be tests for InputForm or App since the Table component dont know anything about the InputForm?
-  it("finner riktig antall døde", () => {
-    // Todo: endre på dato i Props og sjekke at de finnes
-  });
-
-  it("returnere riktig data etter søk", () => {
-    // Todo: simuler klikk på Søk-knapp og sjekk for riktig dato og antall døde. Må mocke axios og bruke mockImplementationOnce på Get kall, så
-    // den returnere ønsket respons
-    //
-  });
-
   it("should display correct number of rows", () => {
     setup(props);
 

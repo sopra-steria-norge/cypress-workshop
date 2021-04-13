@@ -45,15 +45,4 @@ describe("InputForm", () => {
     expect(props.searchCountry).toHaveBeenCalled();
     expect(props.searchCountry).toHaveBeenCalledTimes(1);
   });
-
-  it("finner ingen resultater hvis man skriver inn blankt eller ikke riktig land", () => {
-    // Kunne vurdert å lage en simpel komponent som viser en feilmelding/infomelding ved 0 treff og heller sjekke at den blir vist?
-    render(<InputForm {...props} />);
-  });
-
-  // Optional
-  it("kaller refetch ved keypress", () => {
-    // todo: simulere Enter keypress
-    render(<InputForm {...props} />);
-  });
 });
